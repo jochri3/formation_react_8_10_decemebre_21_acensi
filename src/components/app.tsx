@@ -1,4 +1,7 @@
-const contacts = [
+import { useState } from "react";
+import ContactsList from "./contacts-list";
+
+const initialState = [
   {
     id: 1,
     fname: "Christian",
@@ -57,45 +60,28 @@ const contacts = [
   },
 ];
 
+interface IContact {
+  id: number;
+  fname: string;
+  lname: string;
+  email: string;
+  phoneNumber: string;
+  address: string;
+}
+
+// Avoir 2 components
+// 1 - components qui va contenir le tableau(labels) : contacts.list.tsx
+// 2 - component contact.item.tsx qui va contenir la ligne <tr>....</tr>
+
 const App = () => {
+  const [contacts, setContacts] = useState(initialState);
   const deleteContact = (id: number) => {
-    const index = contacts.findIndex((contact) => contact.id === id);
-    contacts.splice(index, 1);
-    console.log("Taille : ", contacts.length);
-    console.table(contacts);
+    const newContact = [...contacts];
+    const index = newContact.findIndex((contact) => contact.id === id);
+    newContact.splice(index, 1);
+    setContacts(newContact);
   };
-  return (
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Prenom</th>
-          <th>Nom</th>
-          <th>Email</th>
-          <th>Numéro de Téléphone</th>
-          <th>Adresse</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {contacts.map(({ id, fname, lname, address, email, phoneNumber }) => {
-          return (
-            <tr>
-              <td>{id}</td>
-              <td>{fname}</td>
-              <td>{lname}</td>
-              <td>{email}</td>
-              <td>{phoneNumber}</td>
-              <td>{address}</td>
-              <td>
-                <button onClick={() => deleteContact(id)}>Supprimer</button>
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
-  );
+  return <ContactsList contacts={contacts} deleteContact={deleteContact} />;
 };
 
 export default App;
