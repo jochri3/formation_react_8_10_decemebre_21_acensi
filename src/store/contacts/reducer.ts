@@ -5,11 +5,13 @@ import { Action } from "./actions";
 interface IContactState {
   list: IContact[];
   item: IContact;
+  updated: boolean;
 }
 
 const initialState: IContactState = {
   list: [],
   item: {} as IContact,
+  updated: false,
 };
 
 const contactReducer = (
@@ -18,12 +20,16 @@ const contactReducer = (
 ) => {
   switch (action.type) {
     case ActionTypes.FETCH_CONTACTS:
-      return { ...state, list: action.payload };
+      return { ...state, list: action.payload, updated: false };
     case ActionTypes.FETCH_CONTACT_BY_ID:
       return {
         ...state,
         item: state.list.find((contact) => contact.id === action.payload.id),
+        update: false,
       };
+    case ActionTypes.ADD_CONTACT:
+      return { ...state, updated: true };
+
     default:
       return state;
   }

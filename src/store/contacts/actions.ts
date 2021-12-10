@@ -11,4 +11,9 @@ export interface IFetchContactById {
   payload: IContact;
 }
 
-export type Action = IFetchContacts | IFetchContactById;
+export interface IAddContact {
+  type: ActionTypes.ADD_CONTACT;
+  payload?: IContact;
+}
+
+export type Action = IFetchContacts | IFetchContactById | IAddContact;

@@ -16,7 +16,6 @@ const Input: React.FC<InputFieldProps> = ({
   onChange,
   label,
 }) => {
-  console.log(name, " : ", value);
   return (
     <div>
       <label htmlFor={name}>{label}</label>

@@ -4,7 +4,7 @@ import Input from "../shared/input";
 import Button from "../shared/button/";
 
 interface ContactFormProps {
-  isUpdate: boolean;
+  isUpdate?: boolean;
   contact: IContact;
   buttonLabel: string;
   handleChange: (e: React.ChangeEvent<HTMLFormElement>) => void;

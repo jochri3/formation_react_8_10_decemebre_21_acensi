@@ -1,6 +1,7 @@
 enum ActionTypes {
   FETCH_CONTACTS = "fetch_contacts",
   FETCH_CONTACT_BY_ID = "fetch_contact_by_id",
+  ADD_CONTACT = "add_contact",
 }
 
 export default ActionTypes;

@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import { Dispatch } from "redux";
-import { fetchAll } from "../../services/contact.api";
+import { fetchAll, createOne } from "../../services/contact.api";
 import { IFetchContacts, IFetchContactById } from "./actions";
 import { RootState } from "../root.reducer";
 import ActionTypes from "./types";
@@ -22,5 +22,11 @@ export const fetchContactById = (id: number) => {
       type: ActionTypes.FETCH_CONTACT_BY_ID,
       payload: contact,
     });
+  };
+};
+
+export const addContact = (contact: IContact) => {
+  return (dispatch: Dispatch<any>) => {
+    createOne(contact).then(() => {});
   };
 };
