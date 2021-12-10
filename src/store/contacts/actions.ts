@@ -5,3 +5,10 @@ export interface IFetchContacts {
   type: ActionTypes.FETCH_CONTACTS;
   payload: IContact[];
 }
+
+export interface IFetchContactById {
+  type: ActionTypes.FETCH_CONTACT_BY_ID;
+  payload: IContact;
+}
+
+export type Action = IFetchContacts | IFetchContactById;

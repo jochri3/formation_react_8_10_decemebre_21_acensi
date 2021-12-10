@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import IContact from "../../@types/i-contact";
 import ContactsList from "../../components/contacts-list/";
-import { AxiosResponse } from "axios";
-import { fetchAll } from "../../services/contact.api";
 import { fetchContacts } from "../../store/contacts/action.creators";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -14,9 +12,6 @@ export const IndexContacts = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // fetchAll().then((response: AxiosResponse) => {
-    //   setContacts(response.data);
-    // });
     dispatch(fetchContacts());
   }, []);
 
