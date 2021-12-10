@@ -18,7 +18,9 @@ const App = () => {
             <Redirect to="/" />
           </Route>
           <Route exact={true} path="/contacts" component={IndexContacts} />
+          <Route exact path="/contact/new" component={CreateContact} />
           <Route exact path="/contacts/:id" component={ShowContact} />
+          <Route exact path="/contacts/:id/edit" component={EditContact} />
         </Switch>
       </Layout>
     </BrowserRouter>
